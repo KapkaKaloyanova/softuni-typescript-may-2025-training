@@ -21,3 +21,4 @@ console.log( httpCodes({ code: 400, text: 'Bad Request', printChars: 4}));
 console.log( httpCodes({ code: 404, text: 'Not Found'}));
 console.log( httpCodes({ code: 404, text: 'Not Found', printChars: 3}));
 console.log( httpCodes({ code: 500, text: 'Internal Server Error', printChars: 1}));
+
