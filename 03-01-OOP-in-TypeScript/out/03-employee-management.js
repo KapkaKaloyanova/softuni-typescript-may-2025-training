@@ -31,7 +31,7 @@ class Developer extends Employee {
         return this.baseSalary + this.projectBonus;
     }
     getSalaryDetails() {
-        return `${this.name} (Manager): \$${this.baseSalary} + \$${this.projectBonus} = \$${this.calculateAnnualSalary()} annual salary`;
+        return `${this.name} (Developer): \$${this.baseSalary} + \$${this.projectBonus} = \$${this.calculateAnnualSalary()} annual salary`;
     }
 }
 const employee1 = new Manager('Anna', 50000);
