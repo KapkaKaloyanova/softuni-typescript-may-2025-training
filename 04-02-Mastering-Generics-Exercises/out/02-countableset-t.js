@@ -1,32 +1,33 @@
 "use strict";
 class CountedSet {
-    _counts;
+    // private counts: Map<T, number> = new Map<T, number>() // sukraten variant
+    counts;
     constructor() {
-        this._counts = new Map();
+        this.counts = new Map();
     }
     add(item) {
-        if (this._counts.has(item)) {
-            let currentCount = Number(this._counts.get(item));
+        if (this.counts.has(item)) {
+            let currentCount = Number(this.counts.get(item));
             currentCount++;
-            this._counts.set(item, currentCount);
+            this.counts.set(item, currentCount);
         }
         else {
-            this._counts.set(item, 1);
+            this.counts.set(item, 1);
         }
     }
     remove(item) {
-        let currentCount = Number(this._counts.get(item));
-        if (this._counts.has(item) && currentCount >= 1) {
+        let currentCount = Number(this.counts.get(item));
+        if (this.counts.has(item) && currentCount >= 1) {
             currentCount--;
-            this._counts.set(item, currentCount);
+            this.counts.set(item, currentCount);
         }
     }
     contains(item) {
-        const count = this._counts.get(item) ?? 0;
+        const count = this.counts.get(item) ?? 0;
         return count > 0;
     }
     getNumberOfCopies(item) {
-        return this._counts.get(item) ?? 0;
+        return this.counts.get(item) ?? 0;
     }
 }
 // let countedSet = new CountedSet<string>();
