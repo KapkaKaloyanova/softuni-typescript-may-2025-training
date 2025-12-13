@@ -6,39 +6,40 @@ interface CountableSet<T> {
 }
 
 class CountedSet<T> implements CountableSet<T> {
-    private _counts: Map<T, number>;
+    // private counts: Map<T, number> = new Map<T, number>() // sukraten variant
+    private counts: Map<T, number>;
 
     constructor() {
-        this._counts = new Map<T, number>();
+        this.counts = new Map<T, number>();
     }
 
     add(item: T): void {
-        if (this._counts.has(item)) {
+        if (this.counts.has(item)) {
 
-            let currentCount = Number(this._counts.get(item));
+            let currentCount = Number(this.counts.get(item));
             currentCount++;
-            this._counts.set(item, currentCount)
+            this.counts.set(item, currentCount)
 
         } else {
-            this._counts.set(item, 1)
+            this.counts.set(item, 1)
         }
     }
 
     remove(item: T): void {
-        let currentCount = Number(this._counts.get(item));
-        if (this._counts.has(item) && currentCount >= 1) {
+        let currentCount = Number(this.counts.get(item));
+        if (this.counts.has(item) && currentCount >= 1) {
             currentCount--;
-            this._counts.set(item, currentCount)
+            this.counts.set(item, currentCount)
         }
     }
 
     contains(item: T): boolean {
-        const count = this._counts.get(item) ?? 0;
+        const count = this.counts.get(item) ?? 0;
         return count > 0;
     }
 
     getNumberOfCopies(item: T): number {
-        return this._counts.get(item) ?? 0;
+        return this.counts.get(item) ?? 0;
     }
 }
 
