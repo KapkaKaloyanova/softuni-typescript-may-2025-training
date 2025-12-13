@@ -1,0 +1,29 @@
+export { };
+
+type FunctionKeys<T> = {
+    [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
+
+
+type AllFunctions<T> = Pick<T, FunctionKeys<T>>;
+
+
+
+
+type test = {
+    name: string,
+    age: number,
+    test: () => string;
+    pick: () => void;
+}
+type extracted = AllFunctions<test>
+
+
+type Employee = {
+    name: string,
+    salary: number,
+    work: () => void,
+    takeBreak: () => string
+};
+
+type extracted2 = AllFunctions<Employee>;
