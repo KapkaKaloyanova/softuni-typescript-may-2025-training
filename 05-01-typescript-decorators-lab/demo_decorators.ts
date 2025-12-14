@@ -33,7 +33,6 @@ class User {
     @LogProperty
     name: string;
     age: number;
-
     private _email!: string;
 
     constructor(name: string, age: number, email: string) {
@@ -52,10 +51,9 @@ class User {
     }
 
     @LogMethod
-    getInfo(@LogParameter condensed: boolean): string {
+    getInfo(@LogParameter condensed: boolean, @LogParameter test:string): string {
         return condensed ? `Person ${this.name}` : `Person ${this.name} is ${this.age} years old with email ${this.email}`;
     }
 }
-
 const user1 = new User('pen4o', 12, 'pen4o@abv.bg');
 const user2 = new User('min4o', 34, 'min4o@abv.bg');
