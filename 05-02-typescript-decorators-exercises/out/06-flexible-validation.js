@@ -73,6 +73,7 @@ __decorate([
     __metadata("design:type", String),
     __metadata("design:paramtypes", [String])
 ], User.prototype, "password", null);
+export {};
 // correct for name 1 char, 1 < age < 150, pattern /^[a-zA-Z0-9!@]+$/g
 // let user = new User('John', 130, 'hardPassword12');
 // let user2 = new User('John', 30, '!test');
@@ -82,6 +83,5 @@ __decorate([
 // let user = new User('John', 130, 'hardPassword12');
 // let user2 = new User('John', 30, '!test');
 // let user3 = new User('John', 25, '@werty');
-let user4 = new User('Jo', 20, 'password123');
-export {};
+// let user4 = new User('Jo', 20, 'password123');
 //# sourceMappingURL=06-flexible-validation.js.map
