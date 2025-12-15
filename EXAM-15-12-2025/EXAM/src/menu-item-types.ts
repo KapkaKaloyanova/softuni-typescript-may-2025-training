@@ -2,13 +2,13 @@ import { MenuItem, MenuItemType, WithId } from "./models.js";
 import { ConvertToEuro } from "./decorators.js";
 
 export abstract class BaseMenuItem implements MenuItem {
-    protected _basePrice?: number;
-
+    
     constructor(
         public id: number,
         public name: string,
         public weightGrams: number,
-        public type: MenuItemType
+        public type: MenuItemType,
+        protected _basePrice?: number,
     ) {
     }
 
@@ -24,17 +24,17 @@ export abstract class BaseMenuItem implements MenuItem {
 }
 
 export class WelcomeSnack extends BaseMenuItem {
-    hasCream: boolean;
-    constructor(id: number,
+    public hasCream: boolean;
+    constructor(
+        id: number,
         name: string,
         weightGrams: number,
-        type: MenuItemType,
         hasCream: boolean,
-        basePrice: number,
+
     ) {
-        super(id, name, weightGrams, type)
+        const itemType: MenuItemType = MenuItemType.WelcomeSnack;
+        super(id, name, weightGrams, itemType )
         this.hasCream = hasCream;
-        this._basePrice = basePrice
 
     }
     getCalories(): number {
@@ -45,15 +45,16 @@ export class WelcomeSnack extends BaseMenuItem {
 }
 
 export class MainCourse extends BaseMenuItem {
-    fatGrams: number;
-    constructor(id: number,
+    public fatGrams: number;
+    constructor(
+        id: number,
         name: string,
         weightGrams: number,
-        type: MenuItemType,
         fatGrams: number,
-        basePrice: number,
+        basePrice?: number,
     ) {
-        super(id, name, weightGrams, type)
+        const itemType: MenuItemType = MenuItemType.MainCourse;
+        super(id, name, weightGrams, itemType)
         this._basePrice = basePrice
         this.fatGrams = fatGrams
     }
@@ -69,11 +70,11 @@ export class Dessert extends BaseMenuItem {
     constructor(id: number,
         name: string,
         weightGrams: number,
-        type: MenuItemType,
         hasSugar: boolean,
-        basePrice: number,
+        basePrice?: number,
     ) {
-        super(id, name, weightGrams, type)
+        const itemType: MenuItemType = MenuItemType.Dessert;
+        super(id, name, weightGrams, itemType)
         this._basePrice = basePrice
         this.hasSugar = hasSugar
     }
@@ -89,8 +90,3 @@ export function findItemById<T extends WithId>(items: T[], id: number): T | unde
 
 }
 
-export function calculateTotalCalories(items: MenuItem[]):number {
-    return items.reduce((acc, item)=>{
-        return acc + item.getCalories();
-    }, 0);
-}

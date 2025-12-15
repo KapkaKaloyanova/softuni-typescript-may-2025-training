@@ -2,3 +2,7 @@
 04-02-Mastering-Generics-Exercises/out/demo-generics.js
 04-02-Mastering-Generics-Exercises/demo-generics.ts
 *.code-profile
+*.map
+*.js
+EXAM-15-12-2025/EXAM/.vscode/launch.json
+EXAM-15-12-2025/EXAM/package.json

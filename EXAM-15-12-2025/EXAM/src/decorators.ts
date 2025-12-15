@@ -8,7 +8,7 @@ export function ConvertToEuro(target: object, propertyKey: string, descriptor: P
     descriptor.get = function () {
         let priceInBGN = originalGetter.call(this)
         if (priceInBGN === undefined) {
-            return priceInBGN;
+            return this.value;
         } else {
             let finalPriceInEUR = (priceInBGN / 1.95583).toFixed(2);
             const numFinalPriceInEUR = parseFloat(finalPriceInEUR);
