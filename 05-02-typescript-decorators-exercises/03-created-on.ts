@@ -8,12 +8,18 @@
 //     }
 // }
 
-function AddCreatedOn<T extends {new (...args: any[]):{}}>(constructor:T){
-    return class extends constructor{
+// function AddCreatedOn<T extends { new(...args: any[]): User }>(constructor: T) {
+//     return class extends constructor {
+//         createdOn = new Date();
+//     }
+// }
+
+function AddCreatedOn(constructor: { new(...args: any[]): User }) {
+    return class extends constructor {
         createdOn = new Date();
     }
-}
 
+}
 
 @AddCreatedOn
 class User {
@@ -25,7 +31,7 @@ class User {
         this.age = age;
     }
 
-    displayUserInfo() {
+    displayUserInfo(): void {
         console.log(`${this.name}, Age: ${this.age}`);
     }
 }
